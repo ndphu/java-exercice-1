@@ -45,8 +45,7 @@ public class HelloWorldController {
 
     @PostMapping("/api/sayHi")
     public HiResponse sayHi(@RequestBody User body) {
-        HiResponse result = new HiResponse();
-        result.setHi(body.name);
+        HiResponse result = new HiResponse(body.name);
         return result;
     }
 

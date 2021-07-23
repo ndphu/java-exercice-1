@@ -3,14 +3,17 @@ package com.example.exercise1.model;
 import java.time.Instant;
 
 public class HiResponse {
-    public String hi;
+    public String message;
 
-    public String getHi() {
-        return hi;
+    public String getMessage() {
+        return message;
     }
 
-    public void setHi(String hi) {
-        this.hi = hi;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
+    public HiResponse(String name){
+        this.message = "Hi " + name;
+    }
 }
