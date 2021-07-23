@@ -1,5 +1,6 @@
 package com.example.exercise1.controller;
 
+import com.example.exercise1.model.HiResponse;
 import com.example.exercise1.model.MyDateTime;
 import com.example.exercise1.model.User;
 import org.springframework.http.MediaType;
@@ -42,14 +43,11 @@ public class HelloWorldController {
         return timeMilli;
     }
 
-    @PostMapping(
-            value = "/api/sayHi"
-//            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
-    )
-    public Map<String, Object> sayHi(@RequestBody User body) {
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("Hi", body.name);
-        return map;
+    @PostMapping("/api/sayHi")
+    public HiResponse sayHi(@RequestBody User body) {
+        HiResponse result = new HiResponse();
+        result.setHi(body.name);
+        return result;
     }
 
 }
