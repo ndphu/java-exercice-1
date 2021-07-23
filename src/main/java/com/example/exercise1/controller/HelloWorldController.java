@@ -1,11 +1,18 @@
 package com.example.exercise1.controller;
 
+import com.example.exercise1.model.HiResponse;
 import com.example.exercise1.model.MyDateTime;
+import com.example.exercise1.model.User;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Instant;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class HelloWorldController {
@@ -34,6 +41,13 @@ public class HelloWorldController {
         Date endDate = new Date(2021, 9, 05);
         long timeMilli = endDate.getTime() - startDate.getTime();
         return timeMilli;
+    }
+
+    @PostMapping("/api/sayHi")
+    public HiResponse sayHi(@RequestBody User body) {
+        HiResponse result = new HiResponse();
+        result.setHi(body.name);
+        return result;
     }
 
 }
