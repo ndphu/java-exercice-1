@@ -3,6 +3,7 @@ package com.example.exercise1.controller;
 import com.example.exercise1.model.HiResponse;
 import com.example.exercise1.model.MyDateTime;
 import com.example.exercise1.model.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,12 @@ import java.util.Map;
 
 @RestController
 public class HelloWorldController {
+
+//    @Value("${greeting.key2}")
+//    private String greetingKey;
+
+//    @Value("#{${greetingKey}.key2}")
+//    private Map<String, String> greetingKey;
 
     @GetMapping("/")
     public String index() {
@@ -46,7 +53,7 @@ public class HelloWorldController {
     @PostMapping("/api/sayHi")
     public HiResponse sayHi(@RequestBody User body) {
         HiResponse result = new HiResponse();
-        result.setHi(body.name);
+        result.setMessage(body.name);
         return result;
     }
 
