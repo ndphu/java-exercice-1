@@ -17,9 +17,15 @@ import java.util.Map;
 
 @RestController
 public class HelloWorldController {
+    // Spring profile
+    @Value("${greeting.key2}")
+    private String greetingKey;
 
-//    @Value("${greeting.key2}")
-//    private String greetingKey;
+    @Value("${greeting.new}")
+    private String newKey;
+
+    @Value("${greeting.newnew}")
+    private String newnewKey;
 
 //    @Value("#{${greetingKey}.key2}")
 //    private Map<String, String> greetingKey;
@@ -51,9 +57,10 @@ public class HelloWorldController {
     }
 
     @PostMapping("/api/sayHi")
-    public HiResponse sayHi(@RequestBody User body) {
+    public HiResponse sayHi(@RequestBody User user) {
         HiResponse result = new HiResponse();
-        result.setMessage(body.name);
+        String message = String.format("%s %s - %s", greetingKey, user.name, newKey);
+        result.setMessage(message);
         return result;
     }
 

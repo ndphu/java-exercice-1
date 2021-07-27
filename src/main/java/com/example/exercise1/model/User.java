@@ -1,7 +1,5 @@
 package com.example.exercise1.model;
 
-import java.time.Instant;
-
 public class User {
     public String name;
 
@@ -11,5 +9,13 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("User{");
+        sb.append("name='").append(name).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
